@@ -15,6 +15,7 @@
     --secondary-text-color: #FFFFFF;
     --text-color: #757575;
     --interactive-color: #2196F3;
+    --accent-color-shadow: #188ce8;
     --primary-bcg-color: #FFFFFF;
     --secondary-bcg-color: #E5E5E5;
     --trethiary-bcg-color: #F5F4FA;
@@ -22,6 +23,8 @@
     --overlay-color: rgba(47, 48, 58, 0.4);
     --secondary-overlay-color: rgba(47, 48, 58, 0.8);
     --icon-color: #AFB1B8;
+    --form-border-color: rgba(255, 255, 255, 0.3);
+    --form-text-color: rgba(255, 255, 255, 0.6);
 
     --font-family-primary: 'Roboto', sans-serif;
 
@@ -209,7 +212,7 @@ h1, h2, h3, h4, h5, h6, p {
     text-transform: uppercase;
 }
 
-.button {
+.hero-button {
     display: inline-block;
     margin-top: 30px;
     width: 200px;
@@ -226,7 +229,13 @@ h1, h2, h3, h4, h5, h6, p {
     border-color: transparent;
     border-radius: 4px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    transition: background-color var(--transition-duration) var(--transition-timing-function);
+}
 
+.hero-button:hover,
+.hero-button:focus {
+    background-color: var(--accent-color-shadow);
+    transition: background-color var(--transition-duration) var(--transition-timing-function);
 }
 
 
@@ -481,7 +490,8 @@ transition: fill var(--transition-duration) var(--transition-timing-function),
     transform: translate(-50%, -50%) scale(0.9);
     opacity: 0;
     transition: opacity var(--transition-duration) var(--transition-timing-function),
-    transform var(--transition-duration) var(--transition-timing-function);
+    transform var(--transition-duration) var(--transition-timing-function),
+    scale var(--transition-duration) var(--transition-timing-function);
 }
 
 .modal {
@@ -493,10 +503,127 @@ transition: fill var(--transition-duration) var(--transition-timing-function),
     width: 528px;
     height: 581px;
     opacity: 1;
-    transition: opacity var(--transition-duration) var(--transition-timing-function), 
-    transform var(--transition-duration) var(--transition-timing-function);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+
+    transition: opacity var(--transition-duration) var(--transition-timing-function),
+    transform var(--transition-duration) var(--transition-timing-function),
+    scale var(--transition-duration) var(--transition-timing-function);
 
     background-color: var(--primary-bcg-color);
+}
+
+.form {
+    margin-top: 40px;
+    margin-left: 40px;
+    margin-right: 40px;
+
+}
+
+.form-field {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    /* outline: 1px solid tomato; */
+    margin-bottom: 10px;
+}
+
+.form-field input {
+    width: 100%;
+    height: 40px;
+    border: 1px solid rgba(33, 33, 33, 0.2);
+    border-radius: 4px;
+    padding-left: 42px;
+    transition: border var(--transition-duration) var(--transition-timing-function);
+}
+
+.form-field label {
+    margin-bottom: 4px;
+
+    font-size: 12px;
+    line-height: 1.16;
+    letter-spacing: 0.01em;
+
+    color: var(--text-color);
+}
+
+.text-area {
+    width: 100%;
+    border: 1px solid rgba(33, 33, 33, 0.2);
+    border-radius: 4px;
+    transition: border var(--transition-duration) var(--transition-timing-function);
+}
+
+.form-field-icon {
+    position: absolute;
+    top: 29px;
+    left: 12px;
+    transition: fill var(--transition-duration) var(--transition-timing-function);
+}
+
+.form-field:focus-within > .form-field-icon {
+    fill: var(--interactive-color);
+    transition: fill var(--transition-duration) var(--transition-timing-function);
+}
+ 
+.form-field:focus-within > input,
+.form-field:focus-within > .text-area {
+    outline: none;
+    border: 1px solid var(--interactive-color);
+    border-radius: 4px;
+    transition: border var(--transition-duration) var(--transition-timing-function);
+}
+
+.checkbox-form {
+    display: block;
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-left: 14px;
+    margin-right: 11px;
+
+    font-size: 14px;
+    line-height: 1.7;
+    letter-spacing: 0.03em;
+    color: var(--text-color);
+}
+
+.policy {
+    position: absolute;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.checkbox-icon {
+    margin-top: auto;
+    margin-bottom: auto;
+    fill: transparent;
+    border: 2px solid var(--primary-headlines-color);
+    border-radius: 2px;
+    display: inline-block;
+    margin-right: 8px;
+    transition: fill var(--transition-duration) var(--transition-timing-function),
+    background-color var(--transition-duration) var(--transition-timing-function);
+}
+
+.policy-link {
+    padding-left: 3px;
+    color: var(--interactive-color);
+
+    font-size: 14px;
+    line-height: 1.7;
+    letter-spacing: 0.03em;
+}
+
+
+.policy:checked + .checkbox-icon {
+    fill: var(--secondary-text-color);
+    background-color: var(--interactive-color);
+    border: none;
+    transition: fill var(--transition-duration) var(--transition-timing-function),
+    background-color var(--transition-duration) var(--transition-timing-function);
 }
 
 .modal-button {
@@ -505,17 +632,80 @@ transition: fill var(--transition-duration) var(--transition-timing-function),
     right: 8px;
     
     border-radius: 100%;
-    border-color: #969696;
-    background-color: #cecece;
+    border: 1px solid rgba(0, 0, 0, 0.1);
     width: 30px;
-    font-size: 22px;
-    color: #000000;
-
+    height: 30px;
+    background-color: var(--primary-bcg-color);
+    transition: fill var(--transition-duration) var(--transition-timing-function);
 }
+
+.modal-button:hover,
+.modal-button:focus {
+    fill: var(--interactive-color);
+    transition: fill var(--transition-duration) var(--transition-timing-function);
+}
+
 
 .backdrop.is-hidden {
     opacity: 0;
     pointer-events: none;
+}
+
+.close-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+
+
+.text-form {
+    display: block;
+    margin-bottom: 12px;
+
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.15;
+    text-align: center;
+    letter-spacing: 0.03em;
+
+    color: var(--primary-headlines-color);
+}
+
+.text-area {
+    padding: 12px 16px;
+
+    resize: none;
+    width: 100%;
+    height: 120px;
+}
+
+.submit {
+    display: block;
+    margin-top: 30px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 200px;
+    height: 50px;
+    padding: 10px 55px;
+    border-radius: 4px;
+    border: none;
+    color: var(--secondary-text-color);
+    background-color: var(--interactive-color);
+    cursor: pointer;
+    font-weight: 700;
+    line-height: 1.875;
+    letter-spacing: 0.06em;
+    box-shadow: 0px 4px 4px 0px hsl(0deg 0% 0% / 15%);
+    transition: background-color var(--transition-duration) var(--transition-timing-function);
+}
+
+.submit:focus,
+.submit:hover {
+    background-color: var(--accent-color-shadow);
+    transition: background-color var(--transition-duration) var(--transition-timing-function);
 }
 
 /* Footer */
@@ -767,4 +957,76 @@ footer {
     background-color: var(--primary-bcg-color);
 }
 
+.subscribe-form {
+    flex-wrap: wrap;
+    margin-left: 154px;
+}
 
+.subscribe-text {
+    margin-bottom: 20px;
+
+    color: var(--secondary-text-color);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.14;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.subscribe-box {
+    display: flex;
+}
+
+.footer-form-field {
+    position: relative;
+
+}
+
+.footer-email {
+    padding-left: 16px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    
+    width: 358px;
+    height: 50px;
+    border: 1px solid var(--form-border-color);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
+    border-radius: 4px;
+    background-color: transparent;
+    outline: none;
+}
+
+.subscribe-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 12px;
+    width: 200px;
+    height: 50px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    border-color: transparent;
+    background-color: var(--interactive-color);
+    transition: background-color var(--transition-duration) var(--transition-timing-function);
+}
+
+.subscribe-button:hover,
+.subscribe-button:focus {
+    background-color: var(--accent-color-shadow);
+    transition: background-color var(--transition-duration) var(--transition-timing-function);
+}
+
+.text-button {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.87;
+    letter-spacing: 0.06em;
+    color: var(--secondary-text-color);
+
+}
+
+.subscribe-icon {
+    margin-left: 10px;
+    fill: var(--secondary-text-color);
+
+}

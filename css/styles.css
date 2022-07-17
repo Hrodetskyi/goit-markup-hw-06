@@ -695,6 +695,7 @@ transition: fill var(--transition-duration) var(--transition-timing-function),
     color: var(--secondary-text-color);
     background-color: var(--interactive-color);
     cursor: pointer;
+    font-size: 16px;
     font-weight: 700;
     line-height: 1.875;
     letter-spacing: 0.06em;
@@ -712,7 +713,7 @@ transition: fill var(--transition-duration) var(--transition-timing-function),
 
 .footer-box {
     display: flex;
-    justify-content: start;
+    justify-content: space-between;
     align-items: baseline
     
 }
@@ -758,11 +759,14 @@ footer {
 }
 
 .join-box {
-    margin-left: 70px;
+
+    width: 206px;
 }
 
 .join-text {
+    display: inline-block;
     margin-bottom: 20px;
+    width: 206px;
     color: var(--secondary-text-color);
 
     font-family: 'Roboto';
@@ -776,8 +780,9 @@ footer {
 
 .footer-social-links {
     display: flex;
-    width: 44px;
-    height: 44px;
+    margin-right: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .footer-item {
@@ -957,9 +962,11 @@ footer {
     background-color: var(--primary-bcg-color);
 }
 
+/* Subscribe-form */
+
 .subscribe-form {
     flex-wrap: wrap;
-    margin-left: 154px;
+
 }
 
 .subscribe-text {
@@ -994,6 +1001,7 @@ footer {
     border-radius: 4px;
     background-color: transparent;
     outline: none;
+    color: var(--secondary-text-color);
 }
 
 .subscribe-button {
